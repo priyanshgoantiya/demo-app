@@ -2,8 +2,8 @@ import streamlit as st
 import pandas as pd
 
 USERS = {
-    "vinno": "vin123",
-    "jupiter_user1": "jupiter@123"
+    "vinno": "xyz",
+    "jupiter_user1": "priyansh"
 }
 
 # Initialize session state
