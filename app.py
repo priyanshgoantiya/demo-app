@@ -1,16 +1,18 @@
 import streamlit as st
 import pandas as pd
 
+# --- User database ---
 USERS = {
     "vinno": "xyz",
     "jupiter_user1": "priyansh"
 }
 
-# Initialize session state
+# --- Initialize session state ---
 if 'logged_in' not in st.session_state:
     st.session_state.logged_in = False
 if 'username' not in st.session_state:
     st.session_state.username = None
+
 
 def login_page():
     """Display login page"""
@@ -28,22 +30,32 @@ def login_page():
         else:
             st.error("Invalid username or password")
 
+
 def logout():
     """Logout function"""
     st.session_state.logged_in = False
     st.session_state.username = None
     st.rerun()
+
+
 def main_app():
-    "Main application after login"
+    """Main application after login"""
     st.title("🏥 Medical Data Processing System")
+    
     with st.sidebar:
         st.write(f"Logged in as: **{st.session_state.username}**")
-        if st.button('logout'):
+        if st.button('Logout'):
             logout()
         st.divider()
-        st.subheader("select data type")
-        data_type=st.radio("Choose your input:",["Treatment Given", "Relevant Investigation", "Diagnosis", "Demographic Data"])
+        st.subheader("Select data type")
+        data_type = st.radio(
+            "Choose your input:",
+            ["Treatment Given", "Relevant Investigation", "Diagnosis", "Demographic Data"]
+        )
+
     st.header(f"{data_type}")
+
+
 def main():
     """Main entry point"""
     st.set_page_config(
@@ -56,6 +68,7 @@ def main():
         login_page()
     else:
         main_app()
+
 
 if __name__ == "__main__":
     main()
