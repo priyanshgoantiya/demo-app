@@ -33,6 +33,17 @@ def logout():
     st.session_state.logged_in = False
     st.session_state.username = None
     st.rerun()
+def main_app():
+    "Main application after login"
+    st.title("🏥 Medical Data Processing System")
+    with st.sidebar:
+        st.write("logged in as: **{st.session_state.username}**")
+        if button('logout'):
+            logout()
+        st.divider()
+        st.subheader("select data type")
+        data_type=st.radio("Choose your input:",["Treatment Given", "Relevant Investigation", "Diagnosis", "Demographic Data"])
+    st.header(f"{data_type}")
 def main():
     """Main entry point"""
     st.set_page_config(
