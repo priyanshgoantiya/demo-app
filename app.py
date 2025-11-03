@@ -54,6 +54,7 @@ def main_app():
         )
 
     st.header(f"{data_type}")
+    uploaded_file=st.file_uploader("Upload a file",type=['xlsx', 'xls', 'pdf', 'png', 'jpg', 'jpeg'])
 
 
 def main():
